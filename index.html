@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Docflix User Personas</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#F4F4F1;color:#1a1a18}
+
+.wrap{padding:28px 20px 32px}
+
+.hero{text-align:center;margin-bottom:32px}
+.pill-row{display:flex;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.pill{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:4px 12px;border-radius:20px}
+.pill-blue{background:#E6F1FB;color:#185FA5}
+.pill-gray{background:#E8E8E2;color:#5F5E5A}
+.hero-title{font-size:26px;font-weight:500;color:#1a1a18;line-height:1.2;margin-bottom:6px}
+.hero-title span{color:#185FA5}
+.hero-sub{font-size:13px;color:#6b6b67;max-width:480px;margin:0 auto}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:20px}
+
+.card{background:#fff;border:0.5px solid #e0e0d8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card-bar{height:4px;width:100%}
+.bar-blue{background:linear-gradient(90deg,#185FA5,#5DCAA5)}
+.bar-teal{background:linear-gradient(90deg,#1D9E75,#63c9a0)}
+.bar-amber{background:linear-gradient(90deg,#BA7517,#EF9F27)}
+
+.card-top{padding:18px 18px 14px;border-bottom:0.5px solid #ebebE5}
+.avatar-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.avi{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;flex-shrink:0;border:2px solid transparent}
+.avi-blue{background:#E6F1FB;color:#0C447C;border-color:#B5D4F4}
+.avi-teal{background:#E1F5EE;color:#085041;border-color:#9FE1CB}
+.avi-amber{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.persona-name{font-size:15px;font-weight:500;color:#1a1a18}
+.persona-role{font-size:12px;color:#6b6b67;margin-top:2px}
+.persona-loc{font-size:11px;color:#9a9a94;margin-top:1px}
+
+.meta-row{display:flex;gap:6px;flex-wrap:wrap}
+.meta-chip{display:flex;align-items:center;gap:4px;font-size:11px;padding:3px 8px;border-radius:8px;background:#F4F4F1;border:0.5px solid #e0e0d8;color:#6b6b67}
+.chip-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.cd-blue{background:#378ADD}
+.cd-teal{background:#1D9E75}
+.cd-amber{background:#BA7517}
+.cd-red{background:#E24B4A}
+.cd-green{background:#639922}
+
+.card-body{padding:14px 18px;flex:1;display:flex;flex-direction:column;gap:12px}
+.sec-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#9a9a94;margin-bottom:6px}
+.tag-wrap{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500}
+.tg{background:#E1F5EE;color:#085041}
+.tp{background:#FCEBEB;color:#791F1F}
+.tt{background:#E6F1FB;color:#185FA5}
+
+.quote{background:#F4F4F1;border-radius:10px;padding:10px 12px;font-size:12px;font-style:italic;color:#6b6b67;line-height:1.55;position:relative;margin-top:auto}
+.quote::before{content:'\201C';font-size:28px;line-height:1;color:#d0d0c8;position:absolute;top:4px;left:10px;font-style:normal}
+.quote-text{margin-left:16px;display:block}
+
+.usage-row{display:flex;align-items:center;gap:8px;margin-top:2px}
+.usage-label{font-size:11px;color:#9a9a94;min-width:42px}
+.bar-track{flex:1;height:5px;background:#ebebE5;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px}
+.bf-blue{background:linear-gradient(90deg,#185FA5,#378ADD)}
+.bf-teal{background:linear-gradient(90deg,#0F6E56,#1D9E75)}
+.bf-amber{background:linear-gradient(90deg,#854F0B,#BA7517)}
+.bar-pct{font-size:11px;color:#9a9a94;min-width:26px;text-align:right}
+
+.qa-wrap{background:#fff;border:0.5px solid #e0e0d8;border-radius:16px;overflow:hidden}
+.qa-header{padding:14px 20px;border-bottom:0.5px solid #ebebE5;display:flex;align-items:center;gap:10px}
+.qa-icon{width:28px;height:28px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center}
+.qa-title{font-size:14px;font-weight:500;color:#1a1a18}
+.qa-sub{font-size:12px;color:#6b6b67;margin-top:1px}
+.qa-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.qa-col{padding:16px 18px}
+.qa-col+.qa-col{border-left:0.5px solid #ebebE5}
+.qa-persona{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid}
+.qa-rp{color:#185FA5;border-color:#185FA5}
+.qa-sv{color:#1D9E75;border-color:#1D9E75}
+.qa-vd{color:#BA7517;border-color:#BA7517}
+.qa-point{display:flex;align-items:flex-start;gap:7px;margin-bottom:7px;font-size:12px;color:#6b6b67;line-height:1.5}
+.qa-bullet{width:14px;height:14px;border-radius:4px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center}
+.qb-blue{background:#E6F1FB}
+.qb-teal{background:#E1F5EE}
+.qb-amber{background:#FAEEDA}
+
+.foot{text-align:center;padding:16px 0 0;font-size:11px;color:#9a9a94}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="pill-row">
+      <span class="pill pill-blue">Mankind Pharma</span>
+      <span class="pill pill-gray">Docflix · v1.0</span>
+      <span class="pill pill-gray">QA Team · March 2026</span>
+    </div>
+    <div class="hero-title">Know Your <span>Docflix</span> User</div>
+    <p class="hero-sub">Three real user segments — their world, their needs, and how QA should test differently for each one.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- RAMESH -->
+    <div class="card">
+      <div class="card-bar bar-blue"></div>
+      <div class="card-top">
+        <div class="avatar-row">
+          <div class="avi avi-blue">RP</div>
+          <div>
+            <div class="persona-name">Ramesh Patil</div>
+            <div class="persona-role">Medical Representative</div>
+            <div class="persona-loc">26 yrs · Nagpur · 2 yrs exp</div>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-chip"><span class="chip-dot cd-blue"></span>Android</span>
+          <span class="meta-chip"><span class="chip-dot cd-red"></span>Slow 4G</span>
+          <span class="meta-chip"><span class="chip-dot cd-green"></span>Field user</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="sec-label">Goals</div>
+          <div class="tag-wrap">
+            <span class="tag tg">Quick visit prep</span>
+            <span class="tag tg">Under 3-min videos</span>
+            <span class="tag tg">Resume progress</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">Pain Points</div>
+          <div class="tag-wrap">
+            <span class="tag tp">Buffering</span>
+            <span class="tag tp">Stale content</span>
+            <span class="tag tp">Too many notifs</span>
+            <span class="tag tp">Search fails</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">Tools used daily</div>
+          <div class="tag-wrap">
+            <span class="tag tt">WhatsApp</span>
+            <span class="tag tt">Docflix</span>
+            <span class="tag tt">CRM App</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">App usage pattern</div>
+          <div class="usage-row"><span class="usage-label">Morning</span><div class="bar-track"><div class="bar-fill bf-blue" style="width:40%"></div></div><span class="bar-pct">40%</span></div>
+          <div class="usage-row"><span class="usage-label">Midday</span><div class="bar-track"><div class="bar-fill bf-blue" style="width:80%"></div></div><span class="bar-pct">80%</span></div>
+          <div class="usage-row"><span class="usage-label">Night</span><div class="bar-track"><div class="bar-fill bf-blue" style="width:60%"></div></div><span class="bar-pct">60%</span></div>
+        </div>
+        <div class="quote">
+          <span class="quote-text">I don't have time to scroll. Just show me what I need today and let me get on with my visits.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DR. SNEHA -->
+    <div class="card">
+      <div class="card-bar bar-teal"></div>
+      <div class="card-top">
+        <div class="avatar-row">
+          <div class="avi avi-teal">SV</div>
+          <div>
+            <div class="persona-name">Dr. Sneha Verma</div>
+            <div class="persona-role">Diabetologist · HCP</div>
+            <div class="persona-loc">34 yrs · Mumbai · Own clinic</div>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-chip"><span class="chip-dot cd-blue"></span>iPhone</span>
+          <span class="meta-chip"><span class="chip-dot cd-green"></span>5G / Wi-Fi</span>
+          <span class="meta-chip"><span class="chip-dot cd-teal"></span>HCP user</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="sec-label">Goals</div>
+          <div class="tag-wrap">
+            <span class="tag tg">Clinical data only</span>
+            <span class="tag tg">Bookmark &amp; revisit</span>
+            <span class="tag tg">Silent + subtitles</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">Pain Points</div>
+          <div class="tag-wrap">
+            <span class="tag tp">Promo-feel content</span>
+            <span class="tag tp">Browser redirect</span>
+            <span class="tag tp">App crashes</span>
+            <span class="tag tp">No source credibility</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">Tools used daily</div>
+          <div class="tag-wrap">
+            <span class="tag tt">PubMed</span>
+            <span class="tag tt">Docflix</span>
+            <span class="tag tt">Email</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">App usage pattern</div>
+          <div class="usage-row"><span class="usage-label">Morning</span><div class="bar-track"><div class="bar-fill bf-teal" style="width:20%"></div></div><span class="bar-pct">20%</span></div>
+          <div class="usage-row"><span class="usage-label">Lunch</span><div class="bar-track"><div class="bar-fill bf-teal" style="width:55%"></div></div><span class="bar-pct">55%</span></div>
+          <div class="usage-row"><span class="usage-label">Night</span><div class="bar-track"><div class="bar-fill bf-teal" style="width:90%"></div></div><span class="bar-pct">90%</span></div>
+        </div>
+        <div class="quote">
+          <span class="quote-text">If you're going to take 3 minutes of my day, make sure it's worth 3 minutes of my day.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIKRAM -->
+    <div class="card">
+      <div class="card-bar bar-amber"></div>
+      <div class="card-top">
+        <div class="avatar-row">
+          <div class="avi avi-amber">VD</div>
+          <div>
+            <div class="persona-name">Vikram Desai</div>
+            <div class="persona-role">Area Sales Manager</div>
+            <div class="persona-loc">38 yrs · Pune · 18 MRs</div>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-chip"><span class="chip-dot cd-blue"></span>Android+Laptop</span>
+          <span class="meta-chip"><span class="chip-dot cd-green"></span>Wi-Fi</span>
+          <span class="meta-chip"><span class="chip-dot cd-amber"></span>Manager</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="sec-label">Goals</div>
+          <div class="tag-wrap">
+            <span class="tag tg">Team completion tracking</span>
+            <span class="tag tg">Push mandatory videos</span>
+            <span class="tag tg">Shareable reports</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">Pain Points</div>
+          <div class="tag-wrap">
+            <span class="tag tp">Inaccurate data</span>
+            <span class="tag tp">No team filter</span>
+            <span class="tag tp">Complex admin UI</span>
+            <span class="tag tp">Delayed tracking</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">Tools used daily</div>
+          <div class="tag-wrap">
+            <span class="tag tt">Excel</span>
+            <span class="tag tt">Docflix</span>
+            <span class="tag tt">WhatsApp</span>
+          </div>
+        </div>
+        <div>
+          <div class="sec-label">App usage pattern</div>
+          <div class="usage-row"><span class="usage-label">Morning</span><div class="bar-track"><div class="bar-fill bf-amber" style="width:70%"></div></div><span class="bar-pct">70%</span></div>
+          <div class="usage-row"><span class="usage-label">Midday</span><div class="bar-track"><div class="bar-fill bf-amber" style="width:35%"></div></div><span class="bar-pct">35%</span></div>
+          <div class="usage-row"><span class="usage-label">Night</span><div class="bar-track"><div class="bar-fill bf-amber" style="width:75%"></div></div><span class="bar-pct">75%</span></div>
+        </div>
+        <div class="quote">
+          <span class="quote-text">I don't need fancy features. Just tell me who has done their homework and who hasn't.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- QA IMPLICATIONS -->
+  <div class="qa-wrap">
+    <div class="qa-header">
+      <div class="qa-icon">
+        <svg viewBox="0 0 16 16" fill="none" width="16" height="16">
+          <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM7 5.5a1 1 0 112 0v3a1 1 0 11-2 0v-3zm1 5.5a1 1 0 100 2 1 1 0 000-2z" fill="#185FA5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="qa-title">QA Implications — Test differently for each persona</div>
+        <div class="qa-sub">Same app, three very different testing lenses</div>
+      </div>
+    </div>
+    <div class="qa-grid">
+      <div class="qa-col">
+        <div class="qa-persona qa-rp">Ramesh · MR</div>
+        <div class="qa-point"><div class="qa-bullet qb-blue"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Test on mid-range Android device</div>
+        <div class="qa-point"><div class="qa-bullet qb-blue"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Throttle network to 3G during tests</div>
+        <div class="qa-point"><div class="qa-bullet qb-blue"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Validate video resume after force-close</div>
+        <div class="qa-point"><div class="qa-bullet qb-blue"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#185FA5" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Search with misspelled product names</div>
+      </div>
+      <div class="qa-col">
+        <div class="qa-persona qa-sv">Dr. Sneha · HCP</div>
+        <div class="qa-point"><div class="qa-bullet qb-teal"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Test on iOS — all screen sizes</div>
+        <div class="qa-point"><div class="qa-bullet qb-teal"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Validate silent mode + subtitle sync</div>
+        <div class="qa-point"><div class="qa-bullet qb-teal"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Test bookmark flow end to end</div>
+        <div class="qa-point"><div class="qa-bullet qb-teal"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Check UI polish — padding, alignment</div>
+      </div>
+      <div class="qa-col">
+        <div class="qa-persona qa-vd">Vikram · ASM</div>
+        <div class="qa-point"><div class="qa-bullet qb-amber"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#BA7517" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Test manager dashboard in isolation</div>
+        <div class="qa-point"><div class="qa-bullet qb-amber"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#BA7517" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Verify tracking data accuracy + refresh</div>
+        <div class="qa-point"><div class="qa-bullet qb-amber"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#BA7517" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Validate team filter by region</div>
+        <div class="qa-point"><div class="qa-bullet qb-amber"><svg viewBox="0 0 8 8" width="8" height="8"><path d="M1.5 4l2 2 3-3" stroke="#BA7517" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>Cross-check export data vs screen values</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">Docflix · Mankind Pharma · User Persona Document v1.0 · QA Team · March 2026</div>
+</div>
+</body>
+</html>
