@@ -2,319 +2,423 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Jayanta Ghosh - QA Review FY 2025-26</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Segoe UI',sans-serif;background:#0a0a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:16px;}
-.wrap{width:100%;max-width:940px;background:#1a1a2e;border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.6);border:1px solid #2a2a4a;}
-.slide{display:none;min-height:520px;padding:42px 54px;flex-direction:column;}
-.slide.active{display:flex;}
+body{font-family:'Segoe UI',sans-serif;background:#0d0d1f;min-height:100vh;color:#eaeaea;}
+
+/* PROGRESS BAR TOP */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#e94560,#ff6b6b);transition:width .4s ease;z-index:100;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,31,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50;}
+.nav-name{font-size:13px;color:#a0a8c0;font-weight:500;}
+.nav-slide{font-size:12px;color:#e94560;font-weight:700;letter-spacing:1px;}
+
+/* SLIDE CONTAINER */
+.slides-wrap{padding-top:56px;}
+.slide{display:none;min-height:calc(100vh - 56px);padding:48px 48px 100px;animation:fadeIn .4s ease;}
+.slide.active{display:flex;flex-direction:column;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* COVER */
-.cover{background:linear-gradient(135deg,#1a1a2e 0%,#0f3460 100%);align-items:center;justify-content:center;text-align:center;}
-.cover .topbar{width:60px;height:4px;background:#e94560;border-radius:2px;margin-bottom:26px;}
-.cover .eyebrow{font-size:11px;color:#e94560;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;}
-.cover h1{font-size:34px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3;}
-.cover .sub{font-size:15px;color:#a0a8c0;margin-bottom:4px;}
-.cover .dept{font-size:13px;color:#a0a8c0;margin-bottom:22px;}
-.cover .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.cover .badge{padding:7px 18px;border:1px solid #e94560;border-radius:20px;color:#e94560;font-size:12px;}
-.cover .badge.filled{background:#e94560;color:#fff;border:none;}
+.cover{align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 50% 30%,rgba(233,69,96,.12) 0%,transparent 70%);}
+.cover-bar{width:56px;height:3px;background:#e94560;border-radius:2px;margin:0 auto 28px;}
+.cover-eyebrow{font-size:11px;color:#e94560;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
+.cover h1{font-size:48px;font-weight:800;margin-bottom:8px;line-height:1.1;}
+.cover h1 span{color:#e94560;}
+.cover-sub{font-size:16px;color:#a0a8c0;margin-bottom:6px;}
+.cover-meta{font-size:13px;color:#686d80;margin-bottom:32px;}
+.cover-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.cbadge{padding:8px 20px;border:1px solid rgba(233,69,96,.4);border-radius:20px;color:#e94560;font-size:12px;font-weight:600;}
+.cbadge.filled{background:#e94560;color:#fff;border-color:#e94560;}
 
-/* SLIDE HEADER */
-.sh{margin-bottom:20px;}
-.sh .row{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
-.sh .num{color:#e94560;font-weight:800;font-size:11px;letter-spacing:2px;}
+/* IMPACT NUMBERS - SLIDE 2 */
+.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:28px;}
+.impact-card{background:linear-gradient(135deg,rgba(233,69,96,.1),rgba(233,69,96,.03));border:1px solid rgba(233,69,96,.2);border-radius:16px;padding:28px 24px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+.impact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#e94560;transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.impact-card:hover::before{transform:scaleX(1);}
+.impact-card:hover{transform:translateY(-4px);border-color:rgba(233,69,96,.5);background:linear-gradient(135deg,rgba(233,69,96,.15),rgba(233,69,96,.05));}
+.impact-num{font-size:52px;font-weight:800;color:#e94560;line-height:1;margin-bottom:8px;}
+.impact-num span{font-size:28px;}
+.impact-label{font-size:13px;color:#a0a8c0;line-height:1.5;}
+.impact-insight{background:rgba(233,69,96,.06);border:1px solid rgba(233,69,96,.15);border-radius:12px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start;}
+.impact-insight .ico{font-size:18px;margin-top:1px;}
+.impact-insight p{font-size:13px;color:#a0a8c0;line-height:1.7;}
+.impact-insight p b{color:#e94560;}
+
+/* SECTION HEADER */
+.sh{margin-bottom:28px;}
+.sh .row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.sh .num{color:#e94560;font-size:11px;font-weight:700;letter-spacing:2px;}
 .sh .ico{font-size:18px;}
-.sh h2{font-size:22px;font-weight:800;color:#eaeaea;line-height:1.2;}
-.sh .line{width:44px;height:3px;background:#e94560;border-radius:2px;margin-top:8px;}
-.sh .desc{color:#a0a8c0;font-size:12.5px;margin-top:8px;line-height:1.6;}
+.sh h2{font-size:28px;font-weight:800;color:#eaeaea;line-height:1.2;}
+.sh .line{width:44px;height:3px;background:#e94560;border-radius:2px;margin-top:10px;}
+.sh .tagline{font-size:13px;color:#686d80;margin-top:8px;font-style:italic;}
 
-/* STAT CARDS ROW */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
-.stat{background:#16213e;border-radius:12px;padding:16px;text-align:center;border-top:3px solid #e94560;}
-.stat .val{font-size:28px;font-weight:800;color:#e94560;}
-.stat .slbl{font-size:11px;color:#a0a8c0;margin-top:4px;line-height:1.4;}
+/* ACHIEVEMENT CARDS */
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;}
+.ach-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;cursor:pointer;transition:all .3s;position:relative;}
+.ach-card:hover{background:rgba(233,69,96,.07);border-color:rgba(233,69,96,.3);transform:translateY(-3px);}
+.ach-card .ac-ico{font-size:28px;margin-bottom:12px;}
+.ach-card .ac-title{font-size:14px;font-weight:700;color:#eaeaea;margin-bottom:6px;}
+.ach-card .ac-desc{font-size:12.5px;color:#a0a8c0;line-height:1.6;}
+.ach-card .ac-tag{display:inline-block;background:rgba(46,204,113,.1);color:#2ecc71;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;margin-top:10px;letter-spacing:.5px;}
+.ach-card .ac-tag.red{background:rgba(233,69,96,.12);color:#e94560;}
+.ach-card .ac-tag.blue{background:rgba(52,152,219,.12);color:#3498db;}
 
-/* POINTS */
-.pts{display:flex;flex-direction:column;gap:9px;flex:1;}
-.pt{display:flex;gap:12px;align-items:flex-start;background:#16213e;border-radius:10px;padding:11px 15px;}
-.pt .tk{color:#e94560;font-weight:800;font-size:14px;min-width:16px;margin-top:1px;}
+/* AUTOMATION TABLE */
+.auto-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+.auto-table th{background:rgba(233,69,96,.15);color:#e94560;padding:11px 14px;text-align:left;font-size:12px;font-weight:700;letter-spacing:.5px;border-bottom:1px solid rgba(233,69,96,.2);}
+.auto-table td{padding:11px 14px;color:#eaeaea;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;}
+.auto-table tr:hover td{background:rgba(255,255,255,.03);}
+.prog-wrap{display:flex;align-items:center;gap:10px;}
+.prog-bg{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#e94560,#ff6b6b);border-radius:3px;transition:width 1s ease;}
+.prog-val{color:#e94560;font-weight:700;font-size:12px;min-width:34px;}
+.status-pill{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.5px;}
+.status-active{background:rgba(46,204,113,.12);color:#2ecc71;}
+.status-init{background:rgba(243,156,18,.12);color:#f39c18;}
+
+/* 2-COL */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;}
+.col-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;}
+.col-card .col-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+.col-title.green{color:#2ecc71;}
+.col-title.red{color:#e94560;}
+.col-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;}
+.col-item .ci{font-size:14px;min-width:16px;}
+.col-item .ct b{display:block;font-size:13px;color:#eaeaea;margin-bottom:2px;}
+.col-item .ct span{font-size:12px;color:#a0a8c0;line-height:1.5;}
+
+/* BULLET POINTS */
+.pts{display:flex;flex-direction:column;gap:10px;flex:1;}
+.pt{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:13px 16px;cursor:pointer;transition:all .25s;}
+.pt:hover{background:rgba(233,69,96,.07);border-color:rgba(233,69,96,.25);transform:translateX(4px);}
+.pt .tk{color:#e94560;font-weight:800;font-size:15px;min-width:20px;margin-top:1px;}
 .pt .ptitle{color:#eaeaea;font-weight:700;font-size:13px;}
 .pt .pdesc{color:#a0a8c0;font-size:12px;margin-top:3px;line-height:1.5;}
-
-/* 2 COL */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;}
-.card{background:#16213e;border-radius:12px;padding:18px;}
-.card .clbl{font-size:11px;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;}
-.card .clbl.red{color:#e94560;}
-.card .clbl.grn{color:#2ecc71;}
-.citem{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
-.citem .ci{font-size:13px;min-width:14px;}
-.citem .ctxt{color:#eaeaea;font-size:12.5px;line-height:1.5;}
-.citem .ctxt b{color:#eaeaea;display:block;font-size:13px;}
-.citem .ctxt span{color:#a0a8c0;font-size:11.5px;}
-
-/* TABLE */
-.tbl-wrap{overflow-x:auto;margin-bottom:14px;}
-table{width:100%;border-collapse:collapse;font-size:12.5px;}
-th{background:#e94560;color:#fff;padding:9px 12px;text-align:left;font-weight:700;font-size:11.5px;}
-td{padding:9px 12px;color:#eaeaea;border-bottom:1px solid #2a2a4a;font-size:12.5px;}
-tr:nth-child(even) td{background:#16213e;}
-tr:nth-child(odd) td{background:#1a2540;}
-.prog-wrap{display:flex;align-items:center;gap:8px;}
-.prog-bg{flex:1;height:7px;background:#0f3460;border-radius:4px;overflow:hidden;min-width:60px;}
-.prog-fill{height:100%;background:#e94560;border-radius:4px;}
-.prog-val{color:#e94560;font-weight:700;font-size:12px;min-width:34px;}
-.tag-pill{display:inline-block;background:#0f3460;color:#7ec8e3;font-size:10px;padding:2px 8px;border-radius:10px;margin-top:3px;}
-
-/* HIGHLIGHT BOX */
-.hbox{background:#0f3460;border-radius:10px;padding:13px 16px;color:#a0a8c0;font-size:12.5px;line-height:1.7;border-left:3px solid #e94560;margin-top:12px;}
-.hbox b{color:#eaeaea;}
-
-/* INSIGHT BOX */
-.insight{background:#16213e;border-radius:10px;padding:14px 18px;margin-top:12px;display:flex;gap:12px;align-items:flex-start;}
-.insight .ico{font-size:20px;margin-top:2px;}
-.insight .itxt{color:#a0a8c0;font-size:12.5px;line-height:1.7;}
-.insight .itxt b{color:#e94560;}
+.pt .num-badge{background:#e94560;color:#fff;border-radius:6px;font-size:11px;font-weight:800;padding:3px 9px;min-width:22px;text-align:center;margin-top:1px;}
 
 /* CLOSING */
-.closing{background:linear-gradient(135deg,#1a1a2e,#0f3460);align-items:center;justify-content:center;text-align:center;}
-.closing .emoji{font-size:56px;margin-bottom:18px;}
-.closing h1{font-size:38px;font-weight:800;color:#eaeaea;margin-bottom:8px;}
-.closing .csub{font-size:16px;color:#a0a8c0;margin-bottom:20px;}
-.closing .cbar{width:72px;height:4px;background:#e94560;border-radius:2px;margin:0 auto 24px;}
-.closing .tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.closing .ctag{background:#16213e;border:1px solid #2a2a4a;color:#a0a8c0;font-size:12px;padding:6px 16px;border-radius:20px;}
+.closing{align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 50% 40%,rgba(233,69,96,.1) 0%,transparent 70%);}
+.closing .emoji{font-size:64px;margin-bottom:20px;}
+.closing h1{font-size:52px;font-weight:800;margin-bottom:10px;}
+.closing .csub{font-size:18px;color:#a0a8c0;margin-bottom:28px;}
+.closing .cbar{width:72px;height:3px;background:#e94560;border-radius:2px;margin:0 auto 32px;}
+.closing-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:560px;}
+.ctag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#a0a8c0;font-size:12px;padding:7px 16px;border-radius:20px;transition:all .3s;cursor:pointer;}
+.ctag:hover{background:rgba(233,69,96,.12);border-color:rgba(233,69,96,.3);color:#e94560;}
 
 /* CONTROLS */
-.ctrl{display:flex;align-items:center;gap:16px;margin-top:18px;}
-.btn{background:#e94560;color:#fff;border:none;border-radius:8px;padding:9px 24px;cursor:pointer;font-weight:700;font-size:13px;transition:.15s;}
-.btn:disabled{background:#1a1a2e;opacity:.35;cursor:default;}
-.dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;}
-.dot{width:8px;height:8px;border-radius:4px;background:#2a2a4a;cursor:pointer;transition:.2s;}
-.dot.active{width:18px;background:#e94560;}
-.ctr{color:#a0a8c0;font-size:12px;margin-top:8px;}
-.dlbtn{margin-top:10px;background:transparent;border:1px solid #e94560;color:#e94560;border-radius:8px;padding:7px 20px;cursor:pointer;font-size:12px;font-weight:600;transition:.15s;}
-.dlbtn:hover{background:#e94560;color:#fff;}
-@media(max-width:620px){
-  .slide{padding:22px 16px;}
-  .cover h1{font-size:22px;}
-  .stats{grid-template-columns:repeat(2,1fr);}
+.controls{position:fixed;bottom:0;left:0;right:0;padding:16px 32px;background:rgba(13,13,31,.95);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;z-index:50;}
+.btn{background:#e94560;color:#fff;border:none;border-radius:8px;padding:9px 24px;cursor:pointer;font-weight:700;font-size:13px;transition:all .2s;}
+.btn:hover{background:#d63651;transform:translateY(-1px);}
+.btn:disabled{background:rgba(255,255,255,.08);color:rgba(255,255,255,.25);cursor:default;transform:none;}
+.dots{display:flex;gap:6px;align-items:center;}
+.dot{width:7px;height:7px;border-radius:4px;background:rgba(255,255,255,.15);cursor:pointer;transition:all .25s;}
+.dot.active{width:20px;background:#e94560;}
+.dot:hover:not(.active){background:rgba(233,69,96,.4);}
+.slide-ctr{font-size:12px;color:#686d80;}
+
+/* n8n SECTION */
+.n8n-box{background:linear-gradient(135deg,rgba(52,152,219,.08),rgba(52,152,219,.03));border:1px solid rgba(52,152,219,.2);border-radius:14px;padding:20px 24px;margin-top:16px;}
+.n8n-box .n8n-title{font-size:12px;font-weight:700;color:#3498db;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+.n8n-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.n8n-row:last-child{border-bottom:none;}
+.n8n-row .n8n-label{font-size:13px;color:#eaeaea;flex:1;}
+.n8n-row .n8n-projects{font-size:12px;color:#a0a8c0;}
+.n8n-row .n8n-impact{font-size:11px;font-weight:700;color:#2ecc71;background:rgba(46,204,113,.1);padding:3px 10px;border-radius:8px;}
+
+@media(max-width:640px){
+  .slide{padding:32px 20px 90px;}
+  .impact-grid{grid-template-columns:1fr 1fr;}
+  .impact-num{font-size:36px;}
+  .ach-grid{grid-template-columns:1fr;}
   .grid2{grid-template-columns:1fr;}
-  .sh h2{font-size:18px;}
+  .cover h1{font-size:32px;}
+  .controls{padding:12px 16px;}
 }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<div class="progress-bar" id="pbar"></div>
 
-<!-- SLIDE 1: COVER -->
+<nav class="nav">
+  <span class="nav-name">Jayanta Ghosh — QA Review FY 2025–26</span>
+  <span class="nav-slide" id="nav-slide">01 / 10</span>
+</nav>
+
+<div class="slides-wrap">
+
+<!-- S1: COVER -->
 <div class="slide cover active" id="s1">
-  <div class="topbar"></div>
-  <div class="eyebrow">Annual Review &amp; Closure — FY 2025–26</div>
-  <h1>Jayanta Ghosh</h1>
-  <div class="sub">Quality Assurance Department</div>
-  <div class="dept">Date: 7th March 2026</div>
-  <div class="badges">
-    <div class="badge filled">Sr. QA Engineer</div>
-    <div class="badge">4 Years Experience</div>
-    <div class="badge">QA Lead Functions</div>
+  <div class="cover-bar"></div>
+  <div class="cover-eyebrow">Annual Review &amp; Closure — FY 2025–26</div>
+  <h1>Jayanta <span>Ghosh</span></h1>
+  <div class="cover-sub">Quality Assurance Department</div>
+  <div class="cover-meta">Department: QA &nbsp;·&nbsp; Date: 7th March 2026 &nbsp;·&nbsp; Period: FY 2025–26</div>
+  <div class="cover-badges">
+    <div class="cbadge filled">Sr. QA Engineer</div>
+    <div class="cbadge">4 Years Experience</div>
+    <div class="cbadge">QA Lead Functions</div>
+    <div class="cbadge">2× Client Appreciation</div>
   </div>
 </div>
 
-<!-- SLIDE 2: NUMBERS AT A GLANCE -->
+<!-- S2: IMPACT NUMBERS -->
 <div class="slide" id="s2">
   <div class="sh">
     <div class="row"><span class="num">01</span><span class="ico">📊</span></div>
-    <h2>Year at a Glance — Key Numbers</h2>
+    <h2>Year at a Glance</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: Hard numbers that show real business impact delivered this year.</div>
+    <div class="tagline">Hard numbers that show what was delivered — not just what was attempted.</div>
   </div>
-  <div class="stats">
-    <div class="stat"><div class="val">2</div><div class="slbl">Official Client Appreciation Emails</div></div>
-    <div class="stat"><div class="val">4</div><div class="slbl">Projects with Automation Coverage</div></div>
-    <div class="stat"><div class="val">4</div><div class="slbl">Projects with n8n Bug Report Automation</div></div>
-    <div class="stat"><div class="val">75%</div><div class="slbl">Peak Automation Coverage Achieved</div></div>
+  <div class="impact-grid">
+    <div class="impact-card" onclick="goTo(2)">
+      <div class="impact-num">2<span>×</span></div>
+      <div class="impact-label">Official Client Appreciation Emails<br/>Duroflex &amp; Mankind</div>
+    </div>
+    <div class="impact-card" onclick="goTo(4)">
+      <div class="impact-num">4</div>
+      <div class="impact-label">Projects with Active<br/>Automation Coverage</div>
+    </div>
+    <div class="impact-card" onclick="goTo(4)">
+      <div class="impact-num">75<span>%</span></div>
+      <div class="impact-label">Peak Automation Coverage<br/>Docflix &amp; Atrina</div>
+    </div>
+    <div class="impact-card" onclick="goTo(3)">
+      <div class="impact-num">0<span>→∞</span></div>
+      <div class="impact-label">Trainees Built from Zero<br/>to Independent Contributors</div>
+    </div>
   </div>
-  <div class="pts">
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Team Built from Ground Up</div><div class="pdesc">Trainees at Vikhroli office went from zero to independently executing testing, automation, and taking knowledge sessions.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Delivered Lead-Level Work on Senior Engineer Designation</div><div class="pdesc">Handled mentoring, training, automation strategy, documentation, and cross-team coordination — beyond the Sr. QA scope.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Zero Additional Resources Requested</div><div class="pdesc">All of the above was delivered without asking for additional headcount, tools budget, or dedicated support.</div></div></div>
+  <div class="impact-insight">
+    <span class="ico">💡</span>
+    <p>All of this was delivered <b>without requesting additional headcount, tools budget, or dedicated support</b>. The work went beyond the Sr. QA Engineer scope — covering training, automation strategy, documentation, and cross-team coordination simultaneously.</p>
   </div>
 </div>
 
-<!-- SLIDE 3: CLIENT APPRECIATION -->
+<!-- S3: CLIENT APPRECIATION -->
 <div class="slide" id="s3">
   <div class="sh">
     <div class="row"><span class="num">02</span><span class="ico">🏆</span></div>
-    <h2>Client Appreciation — Direct Business Impact</h2>
+    <h2>Client Appreciation</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: Clients don't send official appreciation emails for average work. These are direct quality signals.</div>
+    <div class="tagline">Clients don't send official appreciation emails for average work.</div>
   </div>
-  <div class="pts" style="gap:14px;">
-    <div class="pt"><span class="tk">🎖</span><div>
-      <div class="ptitle">Duroflex — DuroTrace Project</div>
-      <div class="pdesc">Duroflex client sent an official appreciation email recognising product quality and QA efforts. This was a direct outcome of training and guiding the QA team on structured testing approaches for this project. Client satisfaction = business retention.</div>
-      <span class="tag-pill">Official Email Received</span>
-    </div></div>
-    <div class="pt"><span class="tk">🎖</span><div>
-      <div class="ptitle">Mankind — Docflix Project</div>
-      <div class="pdesc">Mankind client officially appreciated the QA team for maintaining thorough product documentation on Confluence. The documentation improved clarity across teams and helped onboard new members faster — reducing ramp-up time and confusion.</div>
-      <span class="tag-pill">Official Email Received</span>
-    </div></div>
+  <div class="ach-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="ach-card">
+      <div class="ac-ico">🎖️</div>
+      <div class="ac-title">Duroflex — DuroTrace Project</div>
+      <div class="ac-desc">The Duroflex client sent an <strong>official appreciation email</strong> recognising product quality and QA efforts. This was a direct outcome of training and guiding QA team members on structured testing approaches for this project.</div>
+      <div class="ac-tag red">Official Email ✓</div>
+    </div>
+    <div class="ach-card">
+      <div class="ac-ico">🎖️</div>
+      <div class="ac-title">Mankind — Docflix Project</div>
+      <div class="ac-desc">The Mankind client officially appreciated the QA team for maintaining thorough <strong>product documentation on Confluence</strong>. The documentation improved clarity for all teams and reduced onboarding time for new members.</div>
+      <div class="ac-tag red">Official Email ✓</div>
+    </div>
   </div>
-  <div class="hbox"><b>CEO Insight:</b> Two client appreciation emails in one year from two different clients across two different projects. This is not coincidence — it is the result of consistent quality focus, strong documentation culture, and a well-trained QA team.</div>
+  <div class="impact-insight" style="margin-top:18px;">
+    <span class="ico">🔑</span>
+    <p><b>Business Impact:</b> Client satisfaction directly impacts renewal, referral, and revenue. Two clients in one year sending official appreciation signals that QA quality is a visible, valued differentiator — not just an internal function.</p>
+  </div>
 </div>
 
-<!-- SLIDE 4: TEAM BUILDING -->
+<!-- S4: TEAM BUILDING -->
 <div class="slide" id="s4">
   <div class="sh">
     <div class="row"><span class="num">03</span><span class="ico">👥</span></div>
     <h2>Team Building &amp; Leadership</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: Building a capable team is a force multiplier. One person who trains five is worth more than five who need constant guidance.</div>
+    <div class="tagline">One person who builds five capable people is worth more than five who need constant guidance.</div>
   </div>
   <div class="pts">
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Trained Trainees at Vikhroli Office — From Zero</div><div class="pdesc">Took trainees with no real project experience and guided them through testing fundamentals, real project scenarios, and automation basics. This was done alongside regular QA responsibilities.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Trainees Now Work Independently</div><div class="pdesc">The same trainees are now contributing actively to Atrina projects — executing tests, participating in automation, and delivering quality work without constant supervision.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Trainees Are Now Training Others</div><div class="pdesc">They are taking internal sessions and sharing QA knowledge with newer team members. The knowledge multiplied — not just stayed with one person.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Saved Hiring Cost for the Company</div><div class="pdesc">Building internal capability means the company did not need to hire an external QA Lead or trainer. The cost of that external hire would far exceed the cost of recognising this contribution.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Trained Trainees at Vikhroli — From Zero</div><div class="pdesc">Took trainees with no real project experience and guided them through testing fundamentals, project scenarios, and automation basics — alongside regular QA responsibilities.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Trainees Now Work Fully Independently</div><div class="pdesc">The same trainees are now contributing actively to Atrina projects — executing tests, participating in automation, and delivering quality work without constant supervision.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Trainees Are Now Training Others</div><div class="pdesc">They are taking internal sessions and sharing QA knowledge with newer team members. Knowledge multiplied — not just transferred to one person.</div></div></div>
+    <div class="pt"><span class="tk">💰</span><div><div class="ptitle">Saved the Company a Significant Hiring Cost</div><div class="pdesc">Building internal capability means no need to hire an external QA Lead or trainer. The cost of that external hire would far exceed the value of recognising this contribution appropriately.</div></div></div>
   </div>
 </div>
 
-<!-- SLIDE 5: KNOWLEDGE SHARING -->
+<!-- S5: AUTOMATION -->
 <div class="slide" id="s5">
   <div class="sh">
-    <div class="row"><span class="num">04</span><span class="ico">📚</span></div>
-    <h2>Knowledge Sharing &amp; Internal Capability</h2>
+    <div class="row"><span class="num">04</span><span class="ico">🤖</span></div>
+    <h2>Automation &amp; Process Efficiency</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: A team that shares knowledge scales faster and depends less on any single person.</div>
+    <div class="tagline">Every automated test = manual hours saved every single sprint. This is recurring cost reduction.</div>
   </div>
-  <div class="pts">
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">API Testing Sessions</div><div class="pdesc">Conducted internal knowledge sessions on API testing and response validation. Team members who had no prior API testing experience now understand how to validate API responses independently.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Automation Knowledge Sharing</div><div class="pdesc">Shared automation concepts, approaches, and best practices with the QA team — improving overall automation awareness beyond just the person executing it.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">n8n Workflow Automation Training</div><div class="pdesc">Introduced the team to n8n automation for QA processes — a tool that most QA teams are not even aware of. This directly improved process efficiency.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Confluence Product Documentation</div><div class="pdesc">Maintained detailed product documentation that helped cross-functional teams and new joiners understand product flows — appreciated officially by the Mankind client.</div></div></div>
+  <table class="auto-table">
+    <tr><th>Project</th><th>Website Automation</th><th>Mobile Automation</th><th>Status</th></tr>
+    <tr>
+      <td><strong>Docflix</strong></td>
+      <td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:75%"></div></div><span class="prog-val">75%</span></div></td>
+      <td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:25%"></div></div><span class="prog-val">25%</span></div></td>
+      <td><span class="status-pill status-active">Active</span></td>
+    </tr>
+    <tr>
+      <td><strong>Atrina</strong></td>
+      <td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:75%"></div></div><span class="prog-val">75%</span></div></td>
+      <td><span style="color:#686d80;font-size:12px;">N/A</span></td>
+      <td><span class="status-pill status-active">Active</span></td>
+    </tr>
+    <tr>
+      <td><strong>MCG</strong></td>
+      <td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:65%"></div></div><span class="prog-val">65%</span></div></td>
+      <td><span style="color:#686d80;font-size:12px;">N/A</span></td>
+      <td><span class="status-pill status-active">Active</span></td>
+    </tr>
+    <tr>
+      <td><strong>Mansa</strong></td>
+      <td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:10%"></div></div><span class="prog-val">10%</span></div></td>
+      <td><span style="color:#686d80;font-size:12px;">N/A</span></td>
+      <td><span class="status-pill status-init">Initiated</span></td>
+    </tr>
+  </table>
+  <div class="n8n-box">
+    <div class="n8n-title">⚙️ n8n Process Automation</div>
+    <div class="n8n-row">
+      <div class="n8n-label"><strong>Monthly Bug Report Automation</strong></div>
+      <div class="n8n-projects">Docflix · Mansa · MCG · DuroTrace</div>
+      <div class="n8n-impact">Manual effort eliminated</div>
+    </div>
   </div>
 </div>
 
-<!-- SLIDE 6: AUTOMATION NUMBERS -->
+<!-- S6: KNOWLEDGE SHARING -->
 <div class="slide" id="s6">
   <div class="sh">
-    <div class="row"><span class="num">05</span><span class="ico">🤖</span></div>
-    <h2>Automation Coverage &amp; Process Efficiency</h2>
+    <div class="row"><span class="num">05</span><span class="ico">📚</span></div>
+    <h2>Knowledge Sharing &amp; Team Capability</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: Every automated test case = manual hours saved every sprint. This is recurring cost reduction.</div>
+    <div class="tagline">A team that shares knowledge scales faster and depends less on any single person.</div>
   </div>
-  <div class="tbl-wrap">
-    <table>
-      <tr><th>Project</th><th>Website Automation</th><th>Mobile Automation</th><th>Status</th></tr>
-      <tr><td><b>Docflix</b></td><td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:75%"></div></div><span class="prog-val">75%</span></div></td><td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:25%"></div></div><span class="prog-val">25%</span></div></td><td style="color:#2ecc71;font-size:11px;">Active</td></tr>
-      <tr><td><b>Atrina</b></td><td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:75%"></div></div><span class="prog-val">75%</span></div></td><td style="color:#a0a8c0;font-size:11px;">N/A</td><td style="color:#2ecc71;font-size:11px;">Active</td></tr>
-      <tr><td><b>MCG</b></td><td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:65%"></div></div><span class="prog-val">65%</span></div></td><td style="color:#a0a8c0;font-size:11px;">N/A</td><td style="color:#2ecc71;font-size:11px;">Active</td></tr>
-      <tr><td><b>Mansa</b></td><td><div class="prog-wrap"><div class="prog-bg"><div class="prog-fill" style="width:10%"></div></div><span class="prog-val">10%</span></div></td><td style="color:#a0a8c0;font-size:11px;">N/A</td><td style="color:#f39c12;font-size:11px;">Initiated</td></tr>
-    </table>
+  <div class="ach-grid">
+    <div class="ach-card">
+      <div class="ac-ico">🔌</div>
+      <div class="ac-title">API Testing Sessions</div>
+      <div class="ac-desc">Conducted internal sessions on API testing and response validation. Team members with no prior API experience now validate independently.</div>
+      <div class="ac-tag blue">Team Upskilled</div>
+    </div>
+    <div class="ach-card">
+      <div class="ac-ico">⚙️</div>
+      <div class="ac-title">n8n Workflow Automation</div>
+      <div class="ac-desc">Introduced n8n to the QA team — a tool most QA teams aren't even aware of. Improved process efficiency across 4 projects.</div>
+      <div class="ac-tag blue">Process Innovation</div>
+    </div>
+    <div class="ach-card">
+      <div class="ac-ico">🤖</div>
+      <div class="ac-title">Automation Best Practices</div>
+      <div class="ac-desc">Shared automation concepts, reusable script patterns, and locator strategies to build sustainable automation across projects.</div>
+      <div class="ac-tag blue">Knowledge Transferred</div>
+    </div>
+    <div class="ach-card">
+      <div class="ac-ico">📄</div>
+      <div class="ac-title">Confluence Documentation</div>
+      <div class="ac-desc">Maintained product documentation that helped cross-functional teams understand flows — appreciated officially by the Mankind client.</div>
+      <div class="ac-tag red">Client Appreciated ✓</div>
+    </div>
   </div>
-  <div class="tbl-wrap">
-    <table>
-      <tr><th>Process Automation</th><th>Tool</th><th>Projects Covered</th><th>Impact</th></tr>
-      <tr><td><b>Monthly Bug Reports</b></td><td>n8n Workflow</td><td>Docflix, Mansa, MCG, DuroTrace</td><td style="color:#2ecc71;">Manual effort eliminated every month</td></tr>
-    </table>
-  </div>
-  <div class="insight"><span class="ico">💡</span><div class="itxt"><b>CEO Insight:</b> Automation at 75% on two major projects means the QA team can run regression in a fraction of the time. n8n bug report automation means zero manual hours spent on monthly reporting across 4 projects — every single month going forward.</div></div>
 </div>
 
-<!-- SLIDE 7: WHAT WORKED / DIDNT -->
+<!-- S7: WHAT WORKED / DIDNT -->
 <div class="slide" id="s7">
   <div class="sh">
     <div class="row"><span class="num">06</span><span class="ico">⚡</span></div>
-    <h2>Honest Assessment — What Worked &amp; What Didn't</h2>
+    <h2>Honest Assessment</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: Professionals who are honest about gaps are more trustworthy than those who only highlight wins.</div>
+    <div class="tagline">Professionals who are honest about gaps are more trustworthy than those who only highlight wins.</div>
   </div>
   <div class="grid2">
-    <div class="card">
-      <div class="clbl grn">✅ What Worked Well</div>
-      <div class="citem"><span class="ci">🟢</span><div class="ctxt"><b>Team Capability Built</b><span>Trainees moved from learning to independently contributing and mentoring others.</span></div></div>
-      <div class="citem"><span class="ci">🟢</span><div class="ctxt"><b>Client Satisfaction</b><span>Two official client appreciation emails — direct quality signal.</span></div></div>
-      <div class="citem"><span class="ci">🟢</span><div class="ctxt"><b>Automation Delivered</b><span>Significant automation coverage across 4 projects reducing manual effort.</span></div></div>
-      <div class="citem"><span class="ci">🟢</span><div class="ctxt"><b>Process Automation</b><span>n8n workflows saving monthly reporting hours across 4 projects.</span></div></div>
+    <div class="col-card">
+      <div class="col-title green">✅ What Worked Well</div>
+      <div class="col-item"><span class="ci">🟢</span><div class="ct"><b>Team Capability Built</b><span>Trainees moved from learning to independently contributing and mentoring others.</span></div></div>
+      <div class="col-item"><span class="ci">🟢</span><div class="ct"><b>2× Client Satisfaction</b><span>Official appreciation from Duroflex and Mankind — direct quality signal.</span></div></div>
+      <div class="col-item"><span class="ci">🟢</span><div class="ct"><b>Automation Delivered</b><span>Strong automation coverage across 4 projects reducing manual effort every sprint.</span></div></div>
+      <div class="col-item"><span class="ci">🟢</span><div class="ct"><b>Process Automation via n8n</b><span>Monthly reporting effort eliminated across 4 projects permanently.</span></div></div>
+      <div class="col-item"><span class="ci">🟢</span><div class="ct"><b>Lead-Level Contribution</b><span>Delivered mentoring, strategy, and documentation beyond Sr. QA scope.</span></div></div>
     </div>
-    <div class="card">
-      <div class="clbl red">❌ What Didn't Work — Honest Gaps</div>
-      <div class="citem"><span class="ci">🔴</span><div class="ctxt"><b>No Formal Certification Yet</b><span>ISTQB not completed — acknowledged as a gap. Committed to completing in next 6 months.</span></div></div>
-      <div class="citem"><span class="ci">🔴</span><div class="ctxt"><b>Contributions Not Always Tracked</b><span>Mentoring, troubleshooting, and support were informal and not logged — making impact less visible.</span></div></div>
-      <div class="citem"><span class="ci">🔴</span><div class="ctxt"><b>Documentation Structure</b><span>Knowledge sessions happened but were not always documented for future reference.</span></div></div>
+    <div class="col-card">
+      <div class="col-title red">❌ Honest Gaps — And How I'll Fix Them</div>
+      <div class="col-item"><span class="ci">🔴</span><div class="ct"><b>No ISTQB Certification Yet</b><span>Acknowledged. Committing to complete it within the next 6 months.</span></div></div>
+      <div class="col-item"><span class="ci">🔴</span><div class="ct"><b>Contributions Not Always Tracked</b><span>Mentoring, reviews, and support were informal. Going forward everything will be logged.</span></div></div>
+      <div class="col-item"><span class="ci">🔴</span><div class="ct"><b>Session Documentation Missing</b><span>Knowledge sessions happened but weren't documented. Will create a central QA knowledge base.</span></div></div>
+      <div class="col-item"><span class="ci">🟡</span><div class="ct"><b>Initial Hesitation in Leadership</b><span>Started the year unsure about mentoring. Overcame it through practice and now comfortable leading.</span></div></div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 8: LEARNINGS -->
+<!-- S8: LEARNINGS -->
 <div class="slide" id="s8">
   <div class="sh">
     <div class="row"><span class="num">07</span><span class="ico">💡</span></div>
-    <h2>Key Learnings This Year</h2>
+    <h2>Key Learnings</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: A person who reflects and learns is an asset. A person who only executes without learning becomes a liability.</div>
+    <div class="tagline">A person who reflects and learns is a long-term asset. Growth mindset over fixed mindset.</div>
   </div>
   <div class="pts">
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Leadership Grows Through Doing — Not Waiting</div><div class="pdesc">Initially hesitant about mentoring and leading sessions. Learned that leadership confidence comes from stepping into the role — not waiting until you feel fully ready.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Asking the Right Questions is a QA Superpower</div><div class="pdesc">Through parameter discussions and test planning sessions, understood that asking the right question before testing saves more time than running 100 wrong test cases.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Teaching Deepens Your Own Knowledge</div><div class="pdesc">Explaining API testing, automation, and QA processes to others forced a deeper understanding of these topics personally — creating a positive learning loop.</div></div></div>
-    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Visibility is as Important as Delivery</div><div class="pdesc">Good work that is not tracked does not exist in the eyes of leadership. Going forward, every contribution — mentoring, review, support — will be logged and visible.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Leadership Grows Through Doing — Not Waiting</div><div class="pdesc">Started hesitant about mentoring. Learned that leadership confidence builds from stepping into the role, not waiting until you feel fully ready. Now actively leading team sessions and discussions.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Asking the Right Questions is a QA Superpower</div><div class="pdesc">Through test parameter discussions and planning, understood that asking the right question upfront saves more time than running 100 wrong test cases. Structured thinking = better coverage.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Teaching Others Deepens Your Own Knowledge</div><div class="pdesc">Explaining API testing, automation, and QA processes to others forced a deeper personal understanding — creating a compounding learning loop that benefits everyone.</div></div></div>
+    <div class="pt"><span class="tk">✓</span><div><div class="ptitle">Visibility is as Important as Delivery</div><div class="pdesc">Good work that is not tracked doesn't exist in the eyes of leadership. Going forward, every contribution — mentoring, review, troubleshooting — will be documented and visible.</div></div></div>
   </div>
 </div>
 
-<!-- SLIDE 9: FOCUS NEXT YEAR -->
+<!-- S9: COMMITMENTS -->
 <div class="slide" id="s9">
   <div class="sh">
     <div class="row"><span class="num">08</span><span class="ico">🎯</span></div>
     <h2>Commitments for FY 26–27</h2>
     <div class="line"></div>
-    <div class="desc">CEO POV: This is what you are getting for the investment. Specific, measurable, and ownership-driven commitments.</div>
+    <div class="tagline">Specific, measurable, and ownership-driven — not vague intentions.</div>
   </div>
   <div class="pts">
-    <div class="pt"><span class="tk">1</span><div><div class="ptitle">Complete ISTQB Certification — Within 6 Months</div><div class="pdesc">Acknowledging this gap and committing to close it. Will bring the learnings back to the team through internal sessions.</div></div></div>
-    <div class="pt"><span class="tk">2</span><div><div class="ptitle">Complete Automation Across All Projects</div><div class="pdesc">Docflix mobile to 75%+, Mansa to 60%+, MCG to 90%+. Full automation roadmap to be defined and tracked quarterly.</div></div></div>
-    <div class="pt"><span class="tk">3</span><div><div class="ptitle">Streamline Full QA Process for Atrina Projects</div><div class="pdesc">Build structured test plans, coverage reports, and automation pipelines for Atrina — improving product quality and client confidence.</div></div></div>
-    <div class="pt"><span class="tk">4</span><div><div class="ptitle">Expand n8n Automation Beyond Reports</div><div class="pdesc">Automate QA dashboards, release summaries, and regression reports — giving leadership real-time visibility without manual effort.</div></div></div>
-    <div class="pt"><span class="tk">5</span><div><div class="ptitle">Formally Own QA Lead Responsibilities</div><div class="pdesc">Ready to take end-to-end ownership of test strategy, automation roadmap, sprint planning, and team development under the QA Lead role officially.</div></div></div>
+    <div class="pt"><span class="num-badge">1</span><div><div class="ptitle">Complete ISTQB Certification — Within 6 Months</div><div class="pdesc">Gap acknowledged. Will complete and bring learnings back to the team through internal sessions. Structured knowledge + practical experience = stronger QA leadership.</div></div></div>
+    <div class="pt"><span class="num-badge">2</span><div><div class="ptitle">Full Automation Coverage Across All Projects</div><div class="pdesc">Docflix mobile 25% → 75%+. Mansa 10% → 60%+. MCG 65% → 90%+. Quarterly automation roadmap to be tracked and reported.</div></div></div>
+    <div class="pt"><span class="num-badge">3</span><div><div class="ptitle">Streamline Complete QA Process for Atrina</div><div class="pdesc">Build structured test plans, coverage maps, and automation pipelines for all Atrina projects. Improve product quality visibility for clients and stakeholders.</div></div></div>
+    <div class="pt"><span class="num-badge">4</span><div><div class="ptitle">Expand n8n Beyond Reports</div><div class="pdesc">Automate QA dashboards, release summaries, and regression reports — giving leadership real-time visibility into QA health across all projects without manual effort.</div></div></div>
+    <div class="pt"><span class="num-badge">5</span><div><div class="ptitle">Formally Own QA Lead Responsibilities</div><div class="pdesc">Ready for end-to-end ownership — test strategy, automation roadmap, sprint planning, team development. The work is already happening. The designation should follow.</div></div></div>
   </div>
 </div>
 
-<!-- SLIDE 10: CLOSING -->
+<!-- S10: CLOSING -->
 <div class="slide closing" id="s10">
   <div class="emoji">🙏</div>
   <h1>Thank You</h1>
   <div class="csub">Open for discussion &amp; feedback</div>
   <div class="cbar"></div>
-  <div class="tags">
-    <div class="ctag">2 Client Appreciations</div>
+  <div class="closing-tags">
+    <div class="ctag">2× Client Appreciation</div>
     <div class="ctag">4 Projects Automated</div>
     <div class="ctag">Team Built from Zero</div>
     <div class="ctag">n8n Process Automation</div>
-    <div class="ctag">Lead-Level Contribution</div>
+    <div class="ctag">Lead-Level Work</div>
+    <div class="ctag">75% Peak Automation</div>
   </div>
 </div>
 
 </div>
 
-<!-- Controls -->
-<div class="ctrl">
+<!-- CONTROLS -->
+<div class="controls">
   <button class="btn" id="prevBtn" onclick="go(-1)" disabled>← Prev</button>
   <div class="dots" id="dots"></div>
   <button class="btn" id="nextBtn" onclick="go(1)">Next →</button>
 </div>
-<div class="ctr" id="ctr">Slide 1 of 10</div>
-<button class="dlbtn" onclick="dl()">⬇ Download HTML File</button>
 
 <script>
 let cur=0,total=10;
 const dotsEl=document.getElementById('dots');
-for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);}
+for(let i=0;i<total;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>goTo(i);
+  dotsEl.appendChild(d);
+}
 function goTo(n){
   document.getElementById('s'+(cur+1)).classList.remove('active');
   cur=n;
@@ -322,11 +426,16 @@ function goTo(n){
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
   document.getElementById('prevBtn').disabled=cur===0;
   document.getElementById('nextBtn').disabled=cur===total-1;
-  document.getElementById('ctr').textContent='Slide '+(cur+1)+' of '+total;
+  document.getElementById('nav-slide').textContent=String(cur+1).padStart(2,'0')+' / '+total;
+  document.getElementById('pbar').style.width=(((cur+1)/total)*100)+'%';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 function go(d){goTo(Math.min(Math.max(cur+d,0),total-1));}
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);});
-function dl(){const b=new Blob([document.documentElement.outerHTML],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Jayanta_Ghosh_QA_Review_FY2526.html';a.click();}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')go(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')go(-1);
+});
+document.getElementById('pbar').style.width='10%';
 </script>
 </body>
 </html>
